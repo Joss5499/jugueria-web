@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: linear-gradient(135deg, #fddb92, #d1fdff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Tarjeta */
+.contenedor {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 350px;
+    text-align: center;
+    box-shadow: 0px 5px 20px rgba(0,0,0,0.2);
+}
+
+/* Imagen carrusel */
+.carrusel img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Botones */
+button {
+    margin: 5px;
+    padding: 8px 12px;
+    border: none;
+    background: #ff914d;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #ff6b00;
+}

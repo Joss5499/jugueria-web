@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juguería Fresh Juice</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="contenedor">
+
+        <!-- ENCABEZADO -->
+        <header>
+            <h1>🍹 Juguería Fresh Juice</h1>
+            <p>Jugos naturales, frescos y saludables</p>
+        </header>
+
+        <!-- CARRUSEL -->
+        <section class="carrusel">
+            <img id="imagenCarrusel" src="img/jugo1.png" alt="Jugos">
+            <br><br>
+            <button onclick="anterior()">⬅</button>
+            <button onclick="siguiente()">➡</button>
+        </section>
+
+        <!-- PRODUCTOS -->
+        <section>
+            <h2>Nuestros Jugos</h2>
+            <ul>
+                <li>Jugo de Naranja 🍊</li>
+                <li>Jugo de Fresa 🍓</li>
+                <li>Jugo Verde 🥬</li>
+                <li>Jugo de Piña 🍍</li>
+            </ul>
+        </section>
+
+        <!-- BOTÓN INTERACTIVO -->
+        <section>
+            <p id="mensaje">Haz clic para recibir una promoción</p>
+            <button id="btnPromo">Ver promoción</button>
+        </section>
+
+        <!-- ENLACE -->
+        <!-- Enlace al repositorio -->
+        <p>
+            Visita nuestro repositorio en 
+            <a href="https://github.com" target="_blank">GitHub</a>
+        </p>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
