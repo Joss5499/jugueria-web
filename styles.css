@@ -1,40 +1,96 @@
-body {
+* {
     margin: 0;
-    font-family: Arial;
-    background: linear-gradient(135deg, #fddb92, #d1fdff);
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f7fa;
+}
+
+/* HEADER */
+.header {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-/* Tarjeta */
-.contenedor {
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
-    width: 350px;
-    text-align: center;
-    box-shadow: 0px 5px 20px rgba(0,0,0,0.2);
-}
-
-/* Imagen carrusel */
-.carrusel img {
-    width: 100%;
-    border-radius: 10px;
-}
-
-/* Botones */
-button {
-    margin: 5px;
-    padding: 8px 12px;
-    border: none;
+    justify-content: space-between;
+    padding: 15px 30px;
     background: #ff914d;
     color: white;
-    border-radius: 5px;
+}
+
+.header a {
+    color: white;
+    margin-left: 15px;
+    text-decoration: none;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 40px;
+    background: linear-gradient(135deg, #fddb92, #d1fdff);
+}
+
+/* CARRUSEL */
+.carrusel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px;
+}
+
+.carrusel img {
+    width: 300px;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.btn {
+    background: #ff914d;
+    border: none;
+    color: white;
+    padding: 10px;
     cursor: pointer;
 }
 
-button:hover {
+/* PRODUCTOS */
+.productos {
+    text-align: center;
+    padding: 30px;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 150px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* PROMO */
+.promo {
+    text-align: center;
+    margin: 30px;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
     background: #ff6b00;
+    color: white;
+    cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #333;
+    color: white;
 }
