@@ -3,56 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juguería Fresh Juice</title>
+    <title>Fresh Juice - Juguería</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <div class="contenedor">
+<header class="header">
+    <h1>🍹 Fresh Juice</h1>
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#productos">Jugos</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+</header>
 
-        <!-- ENCABEZADO -->
-        <header>
-            <h1>🍹 Juguería Fresh Juice</h1>
-            <p>Jugos naturales, frescos y saludables</p>
-        </header>
+<main>
 
-        <!-- CARRUSEL -->
-        <section class="carrusel">
+    <!-- HERO / BIENVENIDA -->
+    <section id="inicio" class="hero">
+        <h2>Jugos naturales y saludables</h2>
+        <p>Disfruta lo mejor de la fruta fresca todos los días</p>
+    </section>
+
+    <!-- CARRUSEL -->
+    <section class="carrusel">
+        <button class="btn prev" onclick="anterior()">❮</button>
+
+        <div class="carrusel-contenedor">
             <img id="imagenCarrusel" src="img/jugo1.png" alt="Jugos">
-            <br><br>
-            <button onclick="anterior()">⬅</button>
-            <button onclick="siguiente()">➡</button>
-        </section>
+        </div>
 
-        <!-- PRODUCTOS -->
-        <section>
-            <h2>Nuestros Jugos</h2>
-            <ul>
-                <li>Jugo de Naranja 🍊</li>
-                <li>Jugo de Fresa 🍓</li>
-                <li>Jugo Verde 🥬</li>
-                <li>Jugo de Piña 🍍</li>
-            </ul>
-        </section>
+        <button class="btn next" onclick="siguiente()">❯</button>
+    </section>
 
-        <!-- BOTÓN INTERACTIVO -->
-        <section>
-            <p id="mensaje">Haz clic para recibir una promoción</p>
-            <button id="btnPromo">Ver promoción</button>
-        </section>
+    <!-- PRODUCTOS -->
+    <section id="productos" class="productos">
+        <h2>Nuestros Jugos</h2>
 
-        <!-- ENLACE -->
-        <!-- Enlace al repositorio -->
-        <p>
-            Visita nuestro repositorio en 
-            <a href="https://github.com" target="_blank">GitHub</a>
-        </p>
-        <p>Nuevo diseño mejorado de juguería</p>
-        <p>Actualización de diseño por Jose</p>
+        <div class="cards">
+            <div class="card">
+                <h3>Naranja 🍊</h3>
+                <p>Refrescante y natural</p>
+            </div>
 
-    </div>
+            <div class="card">
+                <h3>Fresa 🍓</h3>
+                <p>Dulce y energética</p>
+            </div>
 
-    <script src="script.js"></script>
+            <div class="card">
+                <h3>Verde 🥬</h3>
+                <p>Detox y saludable</p>
+            </div>
+        </div>
+    </section>
 
+    <!-- INTERACCIÓN -->
+    <section class="promo">
+        <p id="mensaje">Descubre nuestras promociones</p>
+        <button id="btnPromo">Ver oferta</button>
+    </section>
+
+</main>
+
+<footer id="contacto">
+    <p>© 2026 Fresh Juice | Síguenos en 
+        <a href="https://github.com" target="_blank">GitHub</a>
+    </p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
