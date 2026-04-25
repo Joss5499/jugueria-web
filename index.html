@@ -1,21 +1,45 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fresh Juice — Jugos Naturales Premium</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Fresh Juice — Jugos Naturales Premium</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- CURSOR PERSONALIZADO -->
 <div class="cursor" id="cursor"></div>
 <div class="cursor-dot" id="cursorDot"></div>
 
-<!-- NAVBAR -->
+<!-- CART OVERLAY + SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h2 class="cart-title">🛒 Tu pedido</h2>
+    <button class="cart-close" id="cartClose" aria-label="Cerrar carrito">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty" id="cartEmpty">
+      <div class="cart-empty-icon">🥤</div>
+      <p>Tu carrito está vacío</p>
+      <p style="font-size:.8rem">¡Agrega tus jugos favoritos!</p>
+    </div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-subtotal"><span>Subtotal</span><span id="cartSubtotal">S/ 0.00</span></div>
+    <div class="cart-subtotal"><span>Delivery</span><span style="color:var(--g-fresh)">Gratis 🎉</span></div>
+    <div class="cart-total"><span>Total</span><span id="cartTotal">S/ 0.00</span></div>
+    <button class="btn-checkout" id="btnCheckout">Realizar pedido →</button>
+    <button class="btn-clear" id="btnClearCart">Vaciar carrito</button>
+  </div>
+</aside>
+
+<!-- HEADER -->
 <header class="header" id="header">
   <div class="header-inner">
     <a href="#inicio" class="logo">
@@ -29,14 +53,18 @@
       <a href="#testimonios" class="nav-link">Reseñas</a>
       <a href="#contacto" class="nav-link">Contacto</a>
     </nav>
+    <button class="cart-icon-btn" id="cartBtn" type="button" aria-label="Carrito">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <span>Carrito</span>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
     <a href="#productos" class="nav-cta">Ordenar ahora</a>
-    <button class="burger" id="burger" aria-label="Menú">
+    <button class="burger" id="burger" type="button" aria-label="Menú" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
 
-<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#inicio" class="mob-link">Inicio</a>
   <a href="#nosotros" class="mob-link">Nosotros</a>
@@ -46,8 +74,7 @@
 </div>
 
 <main>
-
-  <!-- ====== HERO ====== -->
+  <!-- HERO -->
   <section id="inicio" class="hero">
     <div class="hero-bg">
       <div class="blob blob-1"></div>
@@ -56,10 +83,7 @@
     </div>
     <div class="hero-content">
       <span class="badge">🌿 100% Natural · Sin conservantes</span>
-      <h1 class="hero-title">
-        La naturaleza<br>
-        en cada <em>sorbo</em>
-      </h1>
+      <h1 class="hero-title">La naturaleza<br>en cada <em>sorbo</em></h1>
       <p class="hero-sub">Jugos prensados en frío, elaborados con las frutas más frescas del mercado. Entrega a domicilio en 30 minutos.</p>
       <div class="hero-actions">
         <a href="#productos" class="btn-primary">Ver menú completo</a>
@@ -77,14 +101,14 @@
       <div class="hero-img-wrap">
         <div class="hero-img-bg"></div>
         <div class="fruit-ring">
-          <span class="fruit f1">🍊</span>
-          <span class="fruit f2">🍓</span>
-          <span class="fruit f3">🥝</span>
-          <span class="fruit f4">🍋</span>
-          <span class="fruit f5">🥭</span>
-          <span class="fruit f6">🍇</span>
+          <span class="fruit f1">🍊</span><span class="fruit f2">🍓</span><span class="fruit f3">🥝</span>
+          <span class="fruit f4">🍋</span><span class="fruit f5">🥭</span><span class="fruit f6">🍇</span>
         </div>
-        <div class="glass-cup">🥤</div>
+        <img class="hero-juice-img"
+          src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=480&h=640&fit=crop&q=85"
+          alt="Jugo fresco natural"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+        <div style="display:none;font-size:7rem;animation:floatCup 5s ease-in-out infinite">🥤</div>
       </div>
     </div>
     <div class="scroll-hint">
@@ -93,33 +117,18 @@
     </div>
   </section>
 
-  <!-- ====== BANNER STRIP ====== -->
+  <!-- STRIP -->
   <div class="strip">
     <div class="strip-inner">
-      <span>🍊 Naranja Valencia</span>
-      <span>·</span>
-      <span>🍓 Fresa Orgánica</span>
-      <span>·</span>
-      <span>🥬 Verde Detox</span>
-      <span>·</span>
-      <span>🥭 Mango Tropical</span>
-      <span>·</span>
-      <span>🫐 Antioxidante Mix</span>
-      <span>·</span>
-      <span>🍋 Limonada Premium</span>
-      <span>·</span>
-      <span>🍊 Naranja Valencia</span>
-      <span>·</span>
-      <span>🍓 Fresa Orgánica</span>
-      <span>·</span>
-      <span>🥬 Verde Detox</span>
-      <span>·</span>
-      <span>🥭 Mango Tropical</span>
-      <span>·</span>
+      <span>🍊 Naranja Valencia</span><span>·</span><span>🍓 Fresa Orgánica</span><span>·</span>
+      <span>🥬 Verde Detox</span><span>·</span><span>🥭 Mango Tropical</span><span>·</span>
+      <span>🫐 Antioxidante Mix</span><span>·</span><span>🍋 Limonada Premium</span><span>·</span>
+      <span>🍊 Naranja Valencia</span><span>·</span><span>🍓 Fresa Orgánica</span><span>·</span>
+      <span>🥬 Verde Detox</span><span>·</span><span>🥭 Mango Tropical</span><span>·</span>
     </div>
   </div>
 
-  <!-- ====== NOSOTROS ====== -->
+  <!-- NOSOTROS -->
   <section id="nosotros" class="nosotros">
     <div class="nosotros-text reveal">
       <span class="section-tag">— Nuestra historia</span>
@@ -135,23 +144,20 @@
     <div class="nosotros-cards reveal">
       <div class="info-card ic-green">
         <div class="ic-icon">🌱</div>
-        <h4>Origen</h4>
-        <p>Trabajamos con más de 30 agricultores locales comprometidos con la agricultura sostenible.</p>
+        <div><h4>Origen</h4><p>Trabajamos con más de 30 agricultores locales comprometidos con la agricultura sostenible.</p></div>
       </div>
       <div class="info-card ic-yellow">
         <div class="ic-icon">⚡</div>
-        <h4>Proceso</h4>
-        <p>Tecnología de prensado en frío que preserva hasta el 90% de los nutrientes y vitaminas.</p>
+        <div><h4>Proceso</h4><p>Tecnología de prensado en frío que preserva hasta el 90% de los nutrientes y vitaminas.</p></div>
       </div>
       <div class="info-card ic-orange">
         <div class="ic-icon">🚴</div>
-        <h4>Entrega</h4>
-        <p>Tu pedido llega en menos de 30 minutos, frío y listo para disfrutar en cualquier momento.</p>
+        <div><h4>Entrega</h4><p>Tu pedido llega en menos de 30 minutos, frío y listo para disfrutar en cualquier momento.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- ====== CARRUSEL ====== -->
+  <!-- CARRUSEL -->
   <section class="carrusel-section">
     <div class="carrusel-header reveal">
       <span class="section-tag">— Momentos frescos</span>
@@ -161,8 +167,8 @@
       <button class="btn prev" id="btnPrev" aria-label="Anterior">&#10094;</button>
       <div class="carrusel-contenedor" id="carrusel">
         <div class="slide-item active">
-          <div class="slide-visual" style="background:linear-gradient(135deg,#ff6b35,#f7c59f)">
-            <span class="slide-emoji">🍊</span>
+          <div class="slide-visual">
+            <img src="https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=500&h=320&fit=crop&q=85" alt="Naranja Valencia" onerror="this.parentElement.style.background='linear-gradient(135deg,#ff6b35,#f7c59f)';this.style.display='none'"/>
           </div>
           <div class="slide-info">
             <h3>Naranja Valencia</h3>
@@ -171,8 +177,8 @@
           </div>
         </div>
         <div class="slide-item">
-          <div class="slide-visual" style="background:linear-gradient(135deg,#e63946,#f4a261)">
-            <span class="slide-emoji">🍓</span>
+          <div class="slide-visual">
+            <img src="https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=500&h=320&fit=crop&q=85" alt="Fresa y Frambuesa" onerror="this.parentElement.style.background='linear-gradient(135deg,#e63946,#f4a261)';this.style.display='none'"/>
           </div>
           <div class="slide-info">
             <h3>Fresa & Frambuesa</h3>
@@ -181,8 +187,8 @@
           </div>
         </div>
         <div class="slide-item">
-          <div class="slide-visual" style="background:linear-gradient(135deg,#2d6a4f,#52b788)">
-            <span class="slide-emoji">🥬</span>
+          <div class="slide-visual">
+            <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=500&h=320&fit=crop&q=85" alt="Verde Detox" onerror="this.parentElement.style.background='linear-gradient(135deg,#2d6a4f,#52b788)';this.style.display='none'"/>
           </div>
           <div class="slide-info">
             <h3>Verde Detox</h3>
@@ -191,8 +197,8 @@
           </div>
         </div>
         <div class="slide-item">
-          <div class="slide-visual" style="background:linear-gradient(135deg,#f4d35e,#f77f00)">
-            <span class="slide-emoji">🥭</span>
+          <div class="slide-visual">
+            <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=320&fit=crop&q=85" alt="Mango Tropical" onerror="this.parentElement.style.background='linear-gradient(135deg,#f4d35e,#f77f00)';this.style.display='none'"/>
           </div>
           <div class="slide-info">
             <h3>Mango Tropical</h3>
@@ -211,36 +217,33 @@
     </div>
   </section>
 
-  <!-- ====== PRODUCTOS ====== -->
+  <!-- PRODUCTOS -->
   <section id="productos" class="productos">
     <div class="productos-header reveal">
       <span class="section-tag">— Nuestro menú</span>
       <h2>Elige tu <em>favorito</em></h2>
       <p class="section-sub">Elaborados cada mañana con frutas seleccionadas. Disponibles para entrega o recojo en tienda.</p>
     </div>
-
     <div class="cards">
 
-      <div class="card reveal" style="--card-color:#ff6b35">
+      <div class="card reveal" data-name="Naranja Pura" data-price="8.00" data-img="https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=120&h=80&fit=crop">
         <div class="card-top" style="background:linear-gradient(135deg,#ff6b35,#f7c59f)">
-          <!-- 🖼️ IMAGEN 1 — Naranja Pura: reemplaza "TU-LINK-AQUI" con la URL de tu imagen -->
-          <img class="card-img" src="TU-LINK-AQUI" alt="Naranja Pura" />
+          <img src="https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=500&h=250&fit=crop&q=85" alt="Naranja Pura" onerror="this.style.display='none'"/>
           <span class="card-badge">Más vendido</span>
         </div>
         <div class="card-body">
           <h3>Naranja Pura</h3>
-          <p>Vitamina C natural · Energizante · Sin azúcar</p>
+          <p>Vitamina C natural · Energizante · Sin azúcar añadida</p>
           <div class="card-footer">
             <span class="price">S/ 8.00</span>
-            <button class="add-btn">+ Agregar</button>
+            <button class="add-btn" type="button">+ Agregar</button>
           </div>
         </div>
       </div>
 
-      <div class="card reveal" style="--card-color:#e63946;animation-delay:.1s">
+      <div class="card reveal" style="animation-delay:.1s" data-name="Fresa Silvestre" data-price="9.00" data-img="https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=120&h=80&fit=crop">
         <div class="card-top" style="background:linear-gradient(135deg,#e63946,#f4a261)">
-          <!-- 🖼️ IMAGEN 2 — Fresa Silvestre: reemplaza "TU-LINK-AQUI" con la URL de tu imagen -->
-          <img class="card-img" src="TU-LINK-AQUI" alt="Fresa Silvestre" />
+          <img src="https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=500&h=250&fit=crop&q=85" alt="Fresa Silvestre" onerror="this.style.display='none'"/>
           <span class="card-badge">Favorito</span>
         </div>
         <div class="card-body">
@@ -248,15 +251,14 @@
           <p>Antioxidantes · Dulce natural · Con chía</p>
           <div class="card-footer">
             <span class="price">S/ 9.00</span>
-            <button class="add-btn">+ Agregar</button>
+            <button class="add-btn" type="button">+ Agregar</button>
           </div>
         </div>
       </div>
 
-      <div class="card reveal" style="--card-color:#2d6a4f;animation-delay:.2s">
+      <div class="card reveal" style="animation-delay:.2s" data-name="Verde Detox" data-price="10.00" data-img="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=120&h=80&fit=crop">
         <div class="card-top" style="background:linear-gradient(135deg,#2d6a4f,#52b788)">
-          <!-- 🖼️ IMAGEN 3 — Verde Detox: reemplaza "TU-LINK-AQUI" con la URL de tu imagen -->
-          <img class="card-img" src="TU-LINK-AQUI" alt="Verde Detox" />
+          <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=500&h=250&fit=crop&q=85" alt="Verde Detox" onerror="this.style.display='none'"/>
           <span class="card-badge">Detox</span>
         </div>
         <div class="card-body">
@@ -264,15 +266,14 @@
           <p>Espinaca · Jengibre · Manzana verde</p>
           <div class="card-footer">
             <span class="price">S/ 10.00</span>
-            <button class="add-btn">+ Agregar</button>
+            <button class="add-btn" type="button">+ Agregar</button>
           </div>
         </div>
       </div>
 
-      <div class="card reveal" style="--card-color:#f4d35e;animation-delay:.3s">
+      <div class="card reveal" style="animation-delay:.3s" data-name="Mango Tropical" data-price="11.00" data-img="https://images.unsplash.com/photo-1547592180-85f173990554?w=120&h=80&fit=crop">
         <div class="card-top" style="background:linear-gradient(135deg,#f4d35e,#f77f00)">
-          <!-- 🖼️ IMAGEN 4 — Mango Tropical: reemplaza "TU-LINK-AQUI" con la URL de tu imagen -->
-          <img class="card-img" src="TU-LINK-AQUI" alt="Mango Tropical" />
+          <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=250&fit=crop&q=85" alt="Mango Tropical" onerror="this.style.display='none'"/>
           <span class="card-badge">Nuevo</span>
         </div>
         <div class="card-body">
@@ -280,15 +281,14 @@
           <p>Mango · Piña · Maracuyá · Cúrcuma</p>
           <div class="card-footer">
             <span class="price">S/ 11.00</span>
-            <button class="add-btn">+ Agregar</button>
+            <button class="add-btn" type="button">+ Agregar</button>
           </div>
         </div>
       </div>
 
-      <div class="card reveal" style="--card-color:#457b9d;animation-delay:.4s">
+      <div class="card reveal" style="animation-delay:.4s" data-name="Antioxidante Mix" data-price="12.00" data-img="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=120&h=80&fit=crop">
         <div class="card-top" style="background:linear-gradient(135deg,#457b9d,#a8dadc)">
-          <!-- 🖼️ IMAGEN 5 — Antioxidante Mix: reemplaza "TU-LINK-AQUI" con la URL de tu imagen -->
-          <img class="card-img" src="TU-LINK-AQUI" alt="Antioxidante Mix" />
+          <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=500&h=250&fit=crop&q=85" alt="Antioxidante Mix" onerror="this.style.display='none'"/>
           <span class="card-badge">Premium</span>
         </div>
         <div class="card-body">
@@ -296,15 +296,14 @@
           <p>Arándanos · Açaí · Granada · Frambuesa</p>
           <div class="card-footer">
             <span class="price">S/ 12.00</span>
-            <button class="add-btn">+ Agregar</button>
+            <button class="add-btn" type="button">+ Agregar</button>
           </div>
         </div>
       </div>
 
-      <div class="card reveal" style="--card-color:#f1c40f;animation-delay:.5s">
+      <div class="card reveal" style="animation-delay:.5s" data-name="Limonada Premium" data-price="7.00" data-img="https://images.unsplash.com/photo-1568093858174-0ba3fd309af7?w=120&h=80&fit=crop">
         <div class="card-top" style="background:linear-gradient(135deg,#f1c40f,#f39c12)">
-          <!-- 🖼️ IMAGEN 6 — Limonada Premium: reemplaza "TU-LINK-AQUI" con la URL de tu imagen -->
-          <img class="card-img" src="TU-LINK-AQUI" alt="Limonada Premium" />
+          <img src="https://images.unsplash.com/photo-1568093858174-0ba3fd309af7?w=500&h=250&fit=crop&q=85" alt="Limonada Premium" onerror="this.style.display='none'"/>
           <span class="card-badge">Clásico</span>
         </div>
         <div class="card-body">
@@ -312,7 +311,7 @@
           <p>Limón · Menta fresca · Jengibre · Hielo</p>
           <div class="card-footer">
             <span class="price">S/ 7.00</span>
-            <button class="add-btn">+ Agregar</button>
+            <button class="add-btn" type="button">+ Agregar</button>
           </div>
         </div>
       </div>
@@ -320,7 +319,7 @@
     </div>
   </section>
 
-  <!-- ====== PROMO ====== -->
+  <!-- PROMO -->
   <section class="promo reveal">
     <div class="promo-bg">
       <div class="promo-blob pb1"></div>
@@ -330,45 +329,100 @@
       <span class="section-tag light">— Oferta especial</span>
       <p id="mensaje" class="promo-title">🎉 2x1 en todos los jugos<br>este fin de semana</p>
       <p class="promo-sub">Válido sábado y domingo · Solo pedidos en línea</p>
-      <button id="btnPromo" class="btn-promo">¡Quiero mi descuento!</button>
+      <button id="btnPromo" class="btn-promo" type="button">¡Quiero mi descuento!</button>
     </div>
   </section>
 
-  <!-- ====== TESTIMONIOS ====== -->
+  <!-- TESTIMONIOS -->
   <section id="testimonios" class="testimonios">
     <div class="testimonios-header reveal">
       <span class="section-tag">— Lo que dicen</span>
       <h2>Clientes que <em>nos aman</em></h2>
     </div>
     <div class="testi-grid">
+
       <div class="testi-card reveal">
         <div class="testi-stars">★★★★★</div>
-        <p>"El mejor jugo de naranja que he probado en Lima. Llega siempre frío y recién exprimido. Lo pido cada mañana."</p>
+        <p>"El mejor jugo de naranja que he probado en Lima. Llega siempre frío y recién exprimido. Lo pido cada mañana sin falta."</p>
         <div class="testi-author">
           <div class="testi-avatar">MR</div>
-          <div><strong>María R.</strong><span>Cliente desde 2022</span></div>
+          <div>
+            <strong>María R.</strong>
+            <span>Cliente desde 2022</span>
+            <span class="testi-product">🍊 Naranja Pura</span>
+          </div>
         </div>
       </div>
+
       <div class="testi-card reveal" style="animation-delay:.15s">
         <div class="testi-stars">★★★★★</div>
-        <p>"El verde detox cambió mi rutina. Me siento con más energía desde la primera semana. ¡100% recomendado!"</p>
+        <p>"El verde detox cambió mi rutina por completo. Me siento con más energía desde la primera semana. ¡100% recomendado!"</p>
         <div class="testi-author">
           <div class="testi-avatar">JC</div>
-          <div><strong>José C.</strong><span>Cliente desde 2023</span></div>
+          <div>
+            <strong>José C.</strong>
+            <span>Cliente desde 2023</span>
+            <span class="testi-product">🥬 Verde Detox</span>
+          </div>
         </div>
       </div>
+
       <div class="testi-card reveal" style="animation-delay:.3s">
         <div class="testi-stars">★★★★★</div>
         <p>"Calidad increíble y entrega súper rápida. El mango tropical es una delicia. Mi familia los pide todas las semanas."</p>
         <div class="testi-author">
           <div class="testi-avatar">LP</div>
-          <div><strong>Lucía P.</strong><span>Cliente desde 2021</span></div>
+          <div>
+            <strong>Lucía P.</strong>
+            <span>Cliente desde 2021</span>
+            <span class="testi-product">🥭 Mango Tropical</span>
+          </div>
         </div>
       </div>
+
+      <div class="testi-card reveal" style="animation-delay:.45s">
+        <div class="testi-stars">★★★★★</div>
+        <p>"El Antioxidante Mix es simplemente increíble. Noto la diferencia en mi piel desde que lo tomo. Definitivamente mi favorito."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#457b9d,#a8dadc)">AC</div>
+          <div>
+            <strong>Andrea C.</strong>
+            <span>Cliente desde 2024</span>
+            <span class="testi-product">🫐 Antioxidante Mix</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal" style="animation-delay:.6s">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Pedí la Limonada Premium para una reunión y todos quedaron impresionados. Fresca, natural y deliciosa. ¡Volveré pronto!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#f1c40f,#f39c12)">KV</div>
+          <div>
+            <strong>Karen V.</strong>
+            <span>Cliente desde 2023</span>
+            <span class="testi-product">🍋 Limonada Premium</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal" style="animation-delay:.75s">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Soy mamá de dos niños y Fresh Juice es nuestra opción saludable diaria. Sin azúcar, sin aditivos, puro sabor natural."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#e63946,#f4a261)">PG</div>
+          <div>
+            <strong>Patricia G.</strong>
+            <span>Cliente desde 2022</span>
+            <span class="testi-product">🍓 Fresa Silvestre</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- ====== NEWSLETTER ====== -->
+  <!-- NEWSLETTER -->
   <section class="newsletter reveal">
     <div class="nl-inner">
       <div class="nl-text">
@@ -376,15 +430,14 @@
         <p>Suscríbete y obtén 15% de descuento en tu primer pedido</p>
       </div>
       <div class="nl-form">
-        <input type="email" placeholder="Tu correo electrónico" id="nlEmail" />
-        <button id="nlBtn">Suscribirme</button>
+        <input type="email" placeholder="Tu correo electrónico" id="nlEmail"/>
+        <button id="nlBtn" type="button">Suscribirme</button>
       </div>
     </div>
   </section>
-
 </main>
 
-<!-- ====== FOOTER ====== -->
+<!-- FOOTER -->
 <footer id="contacto" class="footer">
   <div class="footer-inner">
     <div class="footer-brand">
@@ -424,6 +477,7 @@
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="script.js">
+</script>
 </body>
 </html>
